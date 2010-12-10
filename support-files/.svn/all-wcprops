@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/htcheck/!svn/ver/701/branches/htcheck-webmanager-1.0/support-files
+END
+htcheck_cronjob
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/htcheck/!svn/ver/701/branches/htcheck-webmanager-1.0/support-files/htcheck_cronjob
+END
+crontabUpdateScript.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/htcheck/!svn/ver/701/branches/htcheck-webmanager-1.0/support-files/crontabUpdateScript.php
+END
+.my.cnf
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/htcheck/!svn/ver/698/branches/htcheck-webmanager-1.0/support-files/.my.cnf
+END

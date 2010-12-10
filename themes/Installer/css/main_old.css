@@ -1,0 +1,46 @@
+<!--
+
+a:link {text-decoration: none; color: #900;}
+a:visited {text-decoration: none; color: #039;}
+a:active {text-decoration: none; color: #f99;}
+a:hover {text-decoration: underline; color: #fff; background: #036;}
+
+body { font-family: arial, helvetica, sans-serif; background-color: #F4F6FF; color: #036; font-size: 100%; margin: 0; padding: 0;}
+p { font-size: 90%; }
+td { font-size: 90%; margin: 0; padding: 2pt; border: 1px solid #ddd;}
+th { font-size: 90%; background-color: #ffffdf; color: #036; border: 1px solid #036; margin: 0; padding: 2pt;}
+tr { font-size: 90%; vertical-align: middle; margin: 0; padding: 0;}
+ul { font-size: 90%; margin-top: 0; padding-top: 0;}
+
+h3 { font-size: 110%; padding: 0; margin: 0;}
+h4 { font-size: 100%; padding: 0; margin: 0;}
+
+td.url { font-size: 90%; }
+tr.even { background-color: #ffffff; }
+tr.odd { background-color: #efefef; }
+tr.row { background-color: #66ccff; }
+
+table.wsm_graph { background-color: #ffffdf; }
+table.wsm_data { background-color: #dbffcf; }
+td.wsm_column { font-weight: bold; }
+td.wsm_notes { background-color: #ffffff; }
+
+#header {margin: 0; padding: 0; border-bottom: 1px solid #036; background-color: #fff; width: 100%;}
+#company { font-size: xx-small; background-color: #036; color: #fff; width: 100%; margin: 0; padding: 2px; text-align: center;}
+#header div.img { text-align: left; border: none; width: 200px; float: left; }
+#header div.toolbar { text-align: right; font-size: x-small; float: right; width: 50%; vertical-align: middle; padding: 5px; }
+#footer {margin: 0; padding: 0; border-bottom: 1px solid #036;  border-top: 1px solid #036; background-color: #fff; width: 100%;}
+#footer div.img { text-align: right; border: none; width: 200px; float: right; }
+#footer div.toolbar { text-align: left; font-size: x-small; float: left; width: 50%; vertical-align: middle; padding: 5px; }
+
+#main { margin: 0; margin-top: 3px; padding: 3px; }
+
+div.header { width: 97%; background-color: #036; color: #fff; padding: 5pt; margin-top: 5pt;
+	border: 1px solid #036;}
+
+div.header a { color: #fff; }
+
+div.content { width: 97%; background-color: #fff; color: #036; padding: 5pt; margin-bottom: 5pt; font-size: 85%;
+	border: 1px solid #036;}
+
+-->

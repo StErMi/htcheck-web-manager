@@ -1,0 +1,78 @@
+ht://Check - Web Manager Interface - Install guide
+==================================================
+
+Requirements
+------------
+
+* Apache Web Server
+* PHP >= 5.1.0
+* Yii Framework 1.1.x (http://www.yiiframework.com/)
+* PostgreSQL 8.x/9.x or MySQL 4/5 (for the web manager interface)
+* ht://Check 2.0.1
+
+
+Installation procedure
+----------------------
+
+
+PostgreSQL database setup
+-------------------------
+
+Log into your PostgreSQL server (8.4/9.0) as postgres user and execute the following
+SQL commands which create the 'htcheck_webmanager' and the 'htcheck_webmanager'
+database (feel free to set a different password from PASSWORD):
+
+create user htcheck_webmanager with encrypted password 'PASSWORD';
+create database htcheck_webmanager with owner htcheck_webmanager;
+
+MySQL database setup
+-------------------------
+
+Log into your MySQL server as root user and execute the following
+SQL commands which create the 'htcheck' user and grant to him the needed privileges (feel free to set a different password from PASSWORD):
+
+CREATE USER 'htcheck'@'localhost' IDENTIFIED BY 'PASSWORD';
+GRANT ALL PRIVILEGES ON *.* TO 'htcheck'@'localhost' IDENTIFIED BY 'PASSWORD';
+
+
+ht://Check automatic and manual scan configuration
+----------------------------------------------------
+
+To enable ht://Check - Web Manager to check for new scans and active them you have to
+
+1) create a new system users on your Linux system (e.g.: 'htcheck') with your preferred 'PASSWORD'
+2) Copy the file '.my.cnf' from ht://Check - Web Manager support-files directory and paste it into 'htcheck' home folder. Change the MySQL auth credentials with the username and password used in the step "MySQL database setup"
+3) Copy the file "htcheck_cronjob" from ht://Check - Web Manager support-files directory and paste it where you want. Edit the file replacing HTCHECK_WEBMANAGER_PATH with the ht://Check - Web Manager directory path. After this add to 'htcheck' crotab with the command "crontab htcheck_cronjob"
+
+
+
+Yii Framework local installation
+--------------------------------
+
+You can install the Yii framework locally, next to the document root directory.
+Download the source code and unzip it, then link yii to the latest
+stable release. The procedure is higlighted below:
+
+cd ..
+wget http://www.yiiframework.com/files/yii-1.1.4.tar.gz
+tar xzvf yii-1.1.4.rXXXX.tar.gz
+ln -s yii-1.1.4.rXXXX yii
+rm yii-1.1.4.rXXXX.tar.gz
+
+
+
+Directory permissions
+---------------------
+
+chmod 777 crawlers_config assets protected/runtime protected/config
+
+TODO
+
+
+
+mysql -u root -p
+mysql> CREATE USER 'www-data'@'localhost';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'www-data'@'localhost';
+
+//mysql> CREATE USER 'www-data'@'localhost' IDENTIFIED BY 'www-data';
+//mysql> GRANT ALL PRIVILEGES ON *.* TO 'www-data'@'localhost' IDENTIFIED BY 'www-data';

@@ -1,0 +1,16 @@
+ht://Check - Web Manager Interface
+==================================
+  
+ht://Check is a web interface for the management of multiple
+crawlers, in a multi-user scenario.
+You can manage multiple people, each managing their own website
+and let them decide (or not) when to perform a scan.
+The interface lets you also display results.
+
+
+Main Developer: Emanuele Ricci <stermi@users.sf.net>
+Project Manager: Gabriele Bartolini <gabriele.bartolini@devise.it>
+
+Copyright (c) 2010 Devise.IT S.r.l. - Prato - Italy (www.devise.it)
+ht://Check Web Manager is distributed under the GNU General Public License (GPL), v3.
+See the COPYING file for license information.

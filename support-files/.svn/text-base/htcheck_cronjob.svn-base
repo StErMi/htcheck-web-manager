@@ -1,0 +1,1 @@
+* * * * * /usr/bin/php HTCHECK_WEBMANAGER_PATH/support-files/crontabUpdateScript.php crontab
