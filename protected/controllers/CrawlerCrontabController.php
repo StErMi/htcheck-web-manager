@@ -132,8 +132,10 @@ class CrawlerCrontabController extends Controller
 		{
 			$model->attributes=$_POST['CrawlerCrontab'];
 			$model->crawler_id = $crawler->id;
-			if($model->save())
+			if($model->save()) {
+				Yii::app()->user->setFlash('success', 'Your programmed scan #'.$model->id.' has been <b>added</b> without problems! It will be served on <b>'.$model->toString().'</b>' );
 				$this->redirect(array('admin','crawlerID'=>$crawler->id));
+			}
 		}
 		
 		if(isset($_POST['CrawlerQueue']))
@@ -141,8 +143,10 @@ class CrawlerCrontabController extends Controller
 			$model2->attributes=$_POST['CrawlerQueue'];
 			$model2->crawler_id = $crawler->id;
 			$model2->user_id = User::getUserID();
-			if($model2->save())
+			if($model2->save()) {
+				Yii::app()->user->setFlash('success', 'Your manual scan #'.$model2->id.' has been <b>added</b> without problems! It will be served as soon as possible.');
 				$this->redirect(array('admin','crawlerID'=>$crawler->id));
+			}
 		}
 
 		$this->render('create',array(
@@ -169,8 +173,10 @@ class CrawlerCrontabController extends Controller
 		if(isset($_POST['CrawlerCrontab']))
 		{
 			$model->attributes=$_POST['CrawlerCrontab'];
-			if($model->save())
+			if($model->save()) {
+				Yii::app()->user->setFlash('success', 'Your programmed scan #'.$model->id.' has been <b>updated</b> without problems! It will be served on <b>'.$model->toString().'</b>' );
 				$this->redirect(array('admin','crawlerID'=>$model->crawler->id));
+			}
 		}
 
 		$this->render('update',array(
@@ -193,11 +199,13 @@ class CrawlerCrontabController extends Controller
 			if ( !$model->userHasOwnPermission('cron', $model->crawler_id) )
 				throw new CHttpException(400,'Invalid request. Please do not repeat this request again. You don\'t have sufficient permissions to access to this operation');
 			
+			Yii::app()->user->setFlash('success', 'Your programmed scan #'.$model->id.' has been <b>deleted</b> without problems!' );
 			$model->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
+			if(!isset($_GET['ajax'])) {
 				$this->redirect(array('admin','crawlerID'=>$model->crawler->id));
+			}
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');

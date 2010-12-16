@@ -1,5 +1,3 @@
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui-1.8.2.custom.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/css/main-old.css"></script>
 
 <?php
 
@@ -18,11 +16,21 @@ if ( $permissions['cron'] ) $ops[] = array('label'=>'Manage Crontab', 'url'=>arr
 
 $this->menu=$ops;
 
-
+Yii::app()->clientScript->registerScript(
+   'myHideEffect',
+   '$(".flash-success").animate({opacity: 1.0}, 6000).fadeOut("slow");',
+   CClientScript::POS_READY
+);
 
 ?>
 
 <h1>htCheck DB Detail <?php echo  Yii::app()->session['_db']; ?></h1>
+
+<?php if(Yii::app()->user->hasFlash('success')):?>
+    <div class="flash-success">
+        <?php echo Yii::app()->user->getFlash('success'); ?>
+    </div>
+<?php endif; ?>
 
 <div class="flash-notice">
 The crawler never started. The <?php echo  Yii::app()->session['_db']; ?>'s tables are still empty so there's no datas to show. <br />

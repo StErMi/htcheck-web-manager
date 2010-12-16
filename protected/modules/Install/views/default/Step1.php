@@ -3,11 +3,12 @@ $this->pageTitle = Yii::app()->name.' - System checks';
 $next = true;
 ?>
 <?php echo CHtml::beginForm(array('default/Step2Manager')); ?>
-<h1>System checks</h1>
+<fieldset class="ui-widget ui-widget-content ui-corner-all">
+<legend class="ui-widget ui-widget-header ui-corner-all">System Checks</legend>
 <div class="form">
-    <h3></h3>
+    
     <div class="content">
-    <fieldset>
+    
     <div class="emphasize">Check if htCheck is compatible with your environment</div>
     <ol>
        <li>Web server ... OK</li>
@@ -37,14 +38,17 @@ $next = true;
     <br />
     <div class="flash-error">Make sure all folders listed above exist and are writable before start.</div>
     <?php endif; ?>
-    </fieldset>
+    
 </div>
 </div>
-<h1 style="margin-top: 15px;">License Agreement</h1>
+</fieldset>
+
+<fieldset class="ui-widget ui-widget-content ui-corner-all">
+<legend class="ui-widget ui-widget-header ui-corner-all">License Agreement</legend>
+
 <div class="form">
     <h3></h3>
     <div class="content">
-        <fieldset>
             <div style="height: 250px; width: 800px; overflow: scroll; overflow-x:hidden; border: 1px solid gray; padding: 5px; font-size: 1.2em; margin: 0 auto;">
             <?php
             $copyright = Yii::getPathOfAlias('webroot').'/COPYING';
@@ -58,9 +62,9 @@ $next = true;
         </div>
         <div class="note" style="text-align: center;">By clicking Next, you agree to the terms stated in the htCheck License Agreement above.</div>
         <?php endif; ?>
-        </fieldset>
     </div>
 </div>
+</fieldset>
 <?php CHtml::endForm(); ?>
 
 

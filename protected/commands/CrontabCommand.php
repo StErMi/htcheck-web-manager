@@ -2,7 +2,8 @@
 
 class CrontabCommand extends CConsoleCommand
 {
-public function run($args)
+	
+	public function run($args)
 	{
     	$config = Configuration::model()->find();
         $path = Yii::getPathOfAlias('application');
@@ -103,10 +104,13 @@ public function run($args)
 				}
 			} catch ( Exception $e ) {
         		$confPath = $path.'/crawlers_config/' . $crawler->db_name_prepend . $crawler->db_name . '.out2';
-					$fh = fopen($confPath, 'w') or die("can't open file");
-					$confContent = 'SQL EX ' . print_r($e) . ' Problem taking LOG db: '.$crawler->db_name_prepend . $crawler->db_name;
-					fwrite($fh, $confContent);
-					fclose($fh);
+				$fh = fopen($confPath, 'w') or die("can't open file");
+				$confContent = 'SQL EX ' . print_r($e) . ' Problem taking LOG db: '.$crawler->db_name_prepend . $crawler->db_name;
+				fwrite($fh, $confContent);
+				fclose($fh);
+				
+				$crawler->status = Crawler::STATUS_READY;
+        		$crawler->save(false);
         	}
 			
 			$crawler->status = Crawler::STATUS_READY;

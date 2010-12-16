@@ -1,6 +1,5 @@
-
-
 <?php
+
 $this->breadcrumbs=array(
 	'Groups',
 	$model->title,
@@ -16,11 +15,21 @@ if ( User::checkRole(User::ROLE_ADMIN) ) {
 	);
 }
 
+Yii::app()->clientScript->registerScript(
+   'myHideEffect',
+   '$(".flash-success").animate({opacity: 1.0}, 6000).fadeOut("slow");',
+   CClientScript::POS_READY
+);
+
 ?>
 
 <h1>View Group: <?php echo $model->title; ?></h1>
 
-
+<?php if(Yii::app()->user->hasFlash('success')):?>
+    <div class="flash-success">
+        <?php echo Yii::app()->user->getFlash('success'); ?>
+    </div>
+<?php endif; ?>
 
 <fieldset class="ui-widget ui-widget-content ui-corner-all"> 
 <legend class="ui-widget ui-widget-header ui-corner-all">User List</legend>

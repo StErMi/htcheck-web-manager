@@ -3,11 +3,13 @@ $this->pageTitle = Yii::app()->name.' - System checks';
 $next = true;
 ?>
 <?php echo CHtml::beginForm(array('default/Step1')); ?>
-<h1>Pre Configuration</h1>
+
+<fieldset class="ui-widget ui-widget-content ui-corner-all">
+<legend class="ui-widget ui-widget-header ui-corner-all">Pre Installation</legend>
 <div class="form">
     
-    <div class="content">
-    <fieldset>
+<div class="content">
+
     
 <h2>Requirements</h2>
 <ul>
@@ -79,7 +81,8 @@ chmod 777 crawlers_config assets protected/runtime protected/config</pre>
 
     <br/>
     <?php echo CHtml::submitButton('Next', array('class'=>'button-2'));?>
-    </fieldset>
-	</div>
+    
 </div>
+</div>
+</fieldset>
 <?php CHtml::endForm(); ?>

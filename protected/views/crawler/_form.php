@@ -1,7 +1,80 @@
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui-1.8.2.custom.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.qtip-1.0.0-rc3.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/css/main-old.css"></script>
 
+<fieldset class="ui-widget ui-widget-content ui-corner-all">
+<legend class="ui-widget ui-widget-header ui-corner-all">Crawler Configuration Template</legend>
+
+<form>
+<p>Choose a layout configuration to start from a pre-configured crawler's config. </p>
+<div class="flash-success" id="hidden_update_result" style="display:none;"></div>
+<?php
+  echo CHtml::dropDownList('configuration_layout_list' , '',
+    CHtml::listData(CrawlerConfiguration::model()->findAll(),'id','title'),
+    array(
+      'prompt' => 'Select a template...',
+      'ajax' => array(
+		'type'=>'POST', //request type
+		'url'=> Yii::app()->createUrl('crawlerConfiguration/getData'), //url to call
+		//'update'=>'#city_id', //selector to update
+		//'data'=>'js:javascript statement'
+		//leave out the data key to pass all form values through
+		 'success'=>'js: 
+		 	function(json_string) { 
+		 		// Updating all input form
+		 		var configJSON = eval("(" + json_string + ")");
+		 		$("#Crawler_config_header").val(configJSON.config_header);
+		 		$("#Crawler_config_footer").val(configJSON.config_footer);
+		 		$("#Crawler_limit_urls_to").val(configJSON.limit_urls_to);
+		 		$("#Crawler_limit_normalized").val(configJSON.limit_normalized);
+		 		$("#Crawler_exclude_urls").val(configJSON.exclude_urls);
+		 		$("#Crawler_max_hop_count").val(configJSON.max_hop_count);
+		 		$("#Crawler_max_urls_count").val(configJSON.max_urls_count);
+		 		$("#Crawler_bad_extensions").val(configJSON.bad_extensions);
+		 		$("#Crawler_bad_querystr").val(configJSON.bad_querystr);
+		 		$("#Crawler_db_name_prepend").val(configJSON.db_name_prepend);
+		 		$("#Crawler_mysql_conf_file_prefix").val(configJSON.mysql_conf_file_prefix);
+		 		$("#Crawler_mysql_conf_group").val(configJSON.mysql_conf_group);
+		 		$("#Crawler_mysql_db_charset").val(configJSON.mysql_db_charset);
+		 		$("#Crawler_mysql_client_charset").val(configJSON.mysql_client_charset);
+		 		$("#Crawler_url_index_length").val(configJSON.url_index_length);
+		 		$("#Crawler_max_doc_size").val(configJSON.max_doc_size);
+		 		$("#Crawler_user_agent").val(configJSON.user_agent);
+		 		$("#Crawler_timeout").val(configJSON.timeout);
+		 		$("#Crawler_authorization").val(configJSON.authorization);
+		 		$("#Crawler_max_retries").val(configJSON.max_retries);
+		 		$("#Crawler_tcp_wait_time").val(configJSON.tcp_wait_time);
+		 		$("#Crawler_tcp_max_retries").val(configJSON.tcp_max_retries);
+		 		$("#Crawler_http_proxy").val(configJSON.http_proxy);
+		 		$("#Crawler_http_proxy_exclude").val(configJSON.http_proxy_exclude);
+		 		$("#Crawler_accept_language").val(configJSON.accept_language);
+		 		$("#Crawler_cookies_input_file").val(configJSON.cookies_input_file);
+		 		$("#Crawler_url_reserved_chars").val(configJSON.url_reserved_chars);
+
+		 		//Handling checkboxes
+		 		$("#Crawler_check_external").attr("checked", parseInt(configJSON.check_external) );
+		 		$("#Crawler_optimize_db").attr("checked", parseInt(configJSON.optimize_db) );
+		 		$("#Crawler_sql_big_table_option").attr("checked", parseInt(configJSON.sql_big_table_option) );
+		 		$("#Crawler_store_only_links").attr("checked", parseInt(configJSON.store_only_links) );
+		 		$("#Crawler_store_url_contents").attr("checked", parseInt(configJSON.store_url_contents) );
+		 		$("#Crawler_persistent_connections").attr("checked", parseInt(configJSON.persistent_connections) );
+		 		$("#Crawler_head_before_get").attr("checked", parseInt(configJSON.head_before_get) );
+		 		$("#Crawler_disable_cookies").attr("checked", parseInt(configJSON.disable_cookies) );
+		 		$("#Crawler_summary_anchor_not_found").attr("checked", parseInt(configJSON.summary_anchor_not_found) );
+		 		$("#Crawler_accessibility_checks").attr("checked", parseInt(configJSON.accessibility_checks) );
+		 		
+		 		//Display the result div to let user know the changes.
+		 		var divResult = $("#hidden_update_result");
+		 		divResult.show();
+		 		divResult.text("The Crawler configuration has been updated without problems!");
+		 		divResult.animate({opacity: 1.0}, 4000).fadeOut("slow");
+		 		
+		 	}'
+		)
+    )
+  );
+?>
+
+</form>
+
+</fieldset>
 
 <div class="form">
 

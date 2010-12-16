@@ -6,22 +6,24 @@
 
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />	
 	<!--[if lt IE 8]>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
 	<![endif]-->
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+	<?php Yii::app()->clientScript->registerCssFile( Yii::app()->request->baseUrl . '/css/main.css' ); ?>
+	<?php Yii::app()->clientScript->registerCssFile( Yii::app()->request->baseUrl . '/css/form.css' ); ?>
 	
-	<link type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/redmond/jquery-ui-1.8.2.custom.css" rel="stylesheet" />	
+	<?php Yii::app()->clientScript->registerCssFile( Yii::app()->request->baseUrl . '/css/redmond/jquery-ui-1.8.7.custom.css', 'screen' ); ?>	
 	
 	<?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
+	<?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
+	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/jquery.qtip-1.0.0-rc3.min.js'); ?>
 	
-	<style type="text/css"> 
-			fieldset { margin: 20px auto 20px auto; padding: 10px; }
-			legend { margin: 0.2em 0px 0.2em 20px; padding: 4px; }
-		</style> 
+	<?php Yii::app()->clientScript->registerCss( 'install_custom', 
+			'fieldset { margin: 20px auto 20px auto; padding: 10px; }
+			legend { margin: 0.2em 0px 0.2em 20px; padding: 4px; }'
+	); ?> 
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -36,11 +38,9 @@
 
 	<div id="mainmenu">
 		<?php 
-			
-			if ( !isset($u) )
-				$uid = -1;
-			else
-				$uid = $u->id;
+			$u = User::getMe();
+			if ( empty($u) ) $uid = -1;
+			else $uid = $u->id;
 
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(

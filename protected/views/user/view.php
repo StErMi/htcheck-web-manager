@@ -35,7 +35,19 @@ foreach ( $model->crawler_permissions as $cID => $cp  ) {
 	$ucs .= '<li>Add/Manage Cron: ' . printPerm($cp['cron']) . '</li>';
 	$ucs .= '</ul>';
 }
+
+Yii::app()->clientScript->registerScript(
+   'myHideEffect',
+   '$(".flash-success").animate({opacity: 1.0}, 6000).fadeOut("slow");',
+   CClientScript::POS_READY
+);
 ?>
+
+<?php if(Yii::app()->user->hasFlash('success')):?>
+    <div class="flash-success">
+        <?php echo Yii::app()->user->getFlash('success'); ?>
+    </div>
+<?php endif; ?>
 
 <fieldset class="ui-widget ui-widget-content ui-corner-all">
 <legend class="ui-widget ui-widget-header ui-corner-all">View User <?php echo $model->username; ?></legend>

@@ -204,7 +204,6 @@ class Crawler extends WebManagerActiveRecord
 		$this->config_header = '# ht://check Configuration Header Start Here #';
 		$this->config_footer = '# ht://check Configuration Footer Start Here #';
 		$this->limit_urls_to = '$(start_url)';
-		$this->limit_urls_to = '$(start_url)';
 		$this->max_urls_count = -1;
 		$this->check_external = true;
 		$this->db_name_prepend = 'htcheck_';
@@ -344,9 +343,9 @@ class Crawler extends WebManagerActiveRecord
 	
 	public function unlinkConfig( $path='' ) {
 		//deleting the config
-		$confPath = './crawlers_config/' . $this->db_name_prepend . $this->db_name . 'conf';
+		$confPath = './crawlers_config/' . $this->db_name_prepend . $this->db_name . '.conf';
 		if ( $path != '' ) $confPath = $path;
-		unlink($confPath);
+		@unlink($confPath);
 		return;
 	}
 	

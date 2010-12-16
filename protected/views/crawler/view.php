@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/css/main-old.css"></script>
+
 
 <?php
 
@@ -24,11 +24,22 @@ $ops[] = array('label'=>'Manage Cronjob', 'url'=>array('htCheck/manageCron'));
 
 $this->menu=$ops;
 
+Yii::app()->clientScript->registerScript(
+   'myHideEffect',
+   '$(".flash-success").animate({opacity: 1.0}, 6000).fadeOut("slow");',
+   CClientScript::POS_READY
+);
 
 
 ?>
 
 <h1>Crawler #<?php echo  $crawler->title; ?></h1>
+
+<?php if(Yii::app()->user->hasFlash('success')):?>
+    <div class="flash-success">
+        <?php echo Yii::app()->user->getFlash('success'); ?>
+    </div>
+<?php endif; ?>
 
 <?php if ( $model === null ): ?>
 <div class="flash-notice">

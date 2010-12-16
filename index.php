@@ -7,7 +7,7 @@ if (file_exists(dirname(__FILE__).'/protected/config/db.php') === false
 }
 
 // change the following paths if necessary
-$yii=dirname(__FILE__).'/../yii/framework/yii.php';
+$yii=dirname(__FILE__).'/support-files/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
 
 // remove the following lines when in production mode

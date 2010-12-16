@@ -1,12 +1,13 @@
 <?php $this->pageTitle = Yii::app()->name.' - Admin User information';?>
 
-<h1>Admin User information</h1>
+<?php echo CHtml::beginForm(''); ?>
+<fieldset class="ui-widget ui-widget-content ui-corner-all">
+<legend class="ui-widget ui-widget-header ui-corner-all">Admin User information</legend>
+
 <p class="emphasize">Please be careful. This is the first configuration of the Admin of htCheck Web Manager.</p>
 <div class="form">
-    <h3></h3>
     <div class="content">
-    <?php echo CHtml::beginForm(''); ?>
-    <fieldset>
+    
     <?php echo CHtml::errorSummary($model, null, null, array('class'=>'error')); ?>
     <div class="input">
         <?php echo CHtml::activeLabel($model, 'username'); ?>
@@ -25,7 +26,8 @@
     <div class="output">
         <?php echo CHtml::submitButton('Next', array('class'=>'button-2')); ?>
     </div>
-    </fieldset>
-    <?php echo CHtml::endForm();?>
+    
     </div>
 </div>
+</fieldset>
+<?php echo CHtml::endForm();?>

@@ -1,5 +1,4 @@
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui-1.8.2.custom.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/css/main-old.css"></script>
+
 <?php
 $this->breadcrumbs=array(
 	Yii::app()->session['_db'] => array('htCheck/index'),

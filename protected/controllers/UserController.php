@@ -140,6 +140,7 @@ class UserController extends Controller
 			if( $model->validate() ) {
 				$model->password = md5($model->password);
 				$model->save();
+				Yii::app()->user->setFlash('success', 'The User <b>' . $model->username . '</b> has been created with out problem!');
 				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
@@ -173,8 +174,10 @@ class UserController extends Controller
 				$model->password = $old_pw;
 			else
 				$model->password = md5($model->password);
-			if($model->save())
+			if($model->save()) {
+				Yii::app()->user->setFlash('success', 'The User <b>' . $model->username . '</b> has been updated with out problem!');
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('update',array(
@@ -195,7 +198,11 @@ class UserController extends Controller
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request
-			$this->loadModel()->delete();
+			$model = $this->loadModel();
+			
+			Yii::app()->user->setFlash('success', 'The User <b>' . $model->username . '</b> has been deleted with out problem!');
+			
+			$model->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))

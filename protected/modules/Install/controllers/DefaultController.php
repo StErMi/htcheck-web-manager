@@ -101,13 +101,15 @@ class DefaultController extends CController
                     }
                     $this->redirect(array('default/Step2General'));
                 } else {
-                    $this->render('Step2ManagerErrorDb');
+                	$this->redirect(array('default/Step2ManagerErrorDb'));
+                    //$this->render('Step2ManagerErrorDb');
                 }
             }
         }
 
         $this->render('Step2Manager', array('model'=>$model));
     }
+    
     
 	/**
     * input and check if database connection is valid
@@ -152,12 +154,21 @@ class DefaultController extends CController
                     Yii::app()->session['web_htcheck_port'] = $model->port;
                     $this->redirect(array('default/Step3'));
                 /*} else {
-                    $this->render('Step2GeneralErrorDb');
+                    $this->redirect(array('default/Step2GeneralErrorDb'));
                 }*/
             }
         }
 
         $this->render('Step2General', array('model'=>$model));
+    }
+    
+	//Handling DB Errors
+    public function actionStep2ManagerErrorDb() {
+    	$this->render('Step2ManagerErrorDb');
+    }
+    
+    public function actionStep2GeneralErrorDb() {
+    	$this->render('Step2GeneralErrorDb');
     }
 
     /**
@@ -379,8 +390,8 @@ class DefaultController extends CController
                
                 
                 if ($rowCount > 0 ) {
-                	Yii::app()->session['username'] = $model->username;
-                	Yii::app()->session['password'] = $password;
+                	Yii::app()->session['installer_username'] = $model->username;
+                	Yii::app()->session['installer_password'] = $password;
                 	unset(Yii::app()->session['web_manager_db_type']);
 	                unset(Yii::app()->session['web_manager_username']);
 	                unset(Yii::app()->session['web_manager_password']);
@@ -392,12 +403,21 @@ class DefaultController extends CController
 	                unset(Yii::app()->session['web_htcheck_host']);
 	                unset(Yii::app()->session['web_htcheck_port']);
 	                unset(Yii::app()->session['web_htcheck_db']);
-                    $this->render('Finish');
+                    $this->redirect( array('default/Finish') );
                     Yii::app()->end();
                 }
             }
         }
         $this->render('Step4', array('model' => $model));
+    }
+    
+	/**
+    * finish install applcation
+    *
+    * @return void
+    */
+    public function actionFinish() {
+		$this->render('Finish');
     }
 
     

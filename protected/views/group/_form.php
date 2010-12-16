@@ -1,5 +1,5 @@
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui-1.8.2.custom.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/greed_styles.css" />
+
+<?php Yii::app()->clientScript->registerCssFile( Yii::app()->request->baseUrl . '/css/greed_styles.css' ); ?>
 
 <style type="text/css">
 td.text-center{

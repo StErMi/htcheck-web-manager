@@ -165,6 +165,7 @@ class GroupController extends Controller
 					$m->group_id = $model->id;
 					$m->save();
 				}
+				Yii::app()->user->setFlash('success', 'The group <b>'.$model->title.'</b> (#'.$model->id.') has been <b>created</b> without problems!' );
 				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
@@ -232,6 +233,7 @@ class GroupController extends Controller
 					$m->group_id = $model->id;
 					$m->save();
 				}
+				Yii::app()->user->setFlash('success', 'The group <b>'.$model->title.'</b> (#'.$model->id.') has been <b>updated</b> without problems!' );
 				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
@@ -258,7 +260,7 @@ class GroupController extends Controller
 				throw new CHttpException(400,'Invalid request. Please do not repeat this request again. You don\'t have sufficient permissions to access to this operation');
 			
 			$ul = $model->users;
-			
+			Yii::app()->user->setFlash('success', 'The group <b>'.$model->title.'</b> (#'.$model->id.') has been <b>deleted</b> without problems!' );
 			$model->delete();
 			
 			foreach ( $ul as $u )
@@ -329,6 +331,7 @@ class GroupController extends Controller
 			if ( !isset($_GET['id']) || !isset($_GET['user_id']) )
 				throw new CHttpException(400,'Invalid request. Please do not repeat this request again. Missing parameters for the requested opetation.');
 				
+			Yii::app()->user->setFlash('success', 'The user <b>#'.$_GET['user_id'].'</b>  has been <b>added</b> to the group <b>#'.$_GET['id'].'</b> without problems!' );
 			$ug = new UserGroup;
 			$ug->user_id = $_GET['user_id'];
 			$ug->group_id = $_GET['id'];
@@ -351,6 +354,7 @@ class GroupController extends Controller
 			if ( !isset($_GET['id']) || !isset($_GET['user_id']) )
 				throw new CHttpException(400,'Invalid request. Please do not repeat this request again. Missing parameters for the requested opetation.');
 				
+			Yii::app()->user->setFlash('success', 'The user <b>#'.$_GET['user_id'].'</b>  has been <b>removed</b> from the group <b>#'.$_GET['id'].'</b> without problems!' );
 			$ug = UserGroup::model()->find('user_id=? AND group_id=?', array( $_GET['user_id'] , $_GET['id']));
 			if ( $ug === null )
 				throw new CHttpException(400,'Invalid request. Please do not repeat this request againz.');

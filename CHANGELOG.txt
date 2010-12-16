@@ -1,0 +1,26 @@
+                   ht://Check Web Manager Change Log
+                   ========================
+
+Version 1.0.1 December 14, 2010
+-------------------------------
+
+- Bug: Fixed the bug with qTip 1.0.0RC3 (StErMi)
+- Bug: Fixed a bug on the homepage (StErMi) 
+
+- Enh: CrontabCommand now handles exceptions in the right way  (StErMi)
+- Enh: Improved performance deleting unused staffs (StErMi)
+- Enh: Improved performance packing and compressing all css and js files (StErMi)
+- Enh: Changes in Installation Wizard graphics (StErMi)
+
+- New: Added flash-messages to allow users to changes made (StErMi)
+- New: Added support to email report for groups when a scan end (StErMi)
+- New: Added support for Custom Configuration Template when creating a Crawler Project (StErMi)
+- New: Upgraded JQuery UI to 1.8.6 (StErMi)
+- New: Upgraded JQuery (StErMi)
+- New: Upgraded Yii Framework to 1.1.5 (StErMi)
+- New: Integrated Yii Framework into the project (StErMi)
+
+Version 1.0.0 December 10, 2010
+-------------------------------
+
+First release of ht://Check Web Manager

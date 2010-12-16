@@ -24,11 +24,21 @@ You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&g
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
+<div class="flash-success" id="hidden_update_result" style="display:none;"></div>
+
 <fieldset class="ui-widget ui-widget-content ui-corner-all"> 
 <legend class="ui-widget ui-widget-header ui-corner-all">List of Groups related to the User</legend>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-grid-added',
 	'ajaxUpdate'=>'user-grid-not-added, user-grid-added',
+	'afterAjaxUpdate'=>'
+				function(id, data) { 
+					var divResult = $("#hidden_update_result");
+					divResult.html("The Relation to the Group has been <b>deleted</b> without problems!");
+			 		divResult.show();
+			 		divResult.animate({opacity: 1.0}, 4000).fadeOut("slow");
+				}
+			',
 	'dataProvider'=>$groupIN->searchUser( $model->id, true ),
 	'filter'=>$groupIN,
 	'columns'=>array(
@@ -59,6 +69,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-grid-not-added',
 	'ajaxUpdate'=>'user-grid-not-added, user-grid-added',
+	'afterAjaxUpdate'=>'
+				function(id, data) { 
+					var divResult = $("#hidden_update_result");
+					divResult.html("The Relation to the Group has been <b>added</b> without problems!");
+			 		divResult.show();
+			 		divResult.animate({opacity: 1.0}, 4000).fadeOut("slow");
+				}
+			',
 	'dataProvider'=>$groupOUT->searchUser( $model->id, false ),
 	'filter'=>$groupOUT,
 	'columns'=>array(

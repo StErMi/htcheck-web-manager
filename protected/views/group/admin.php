@@ -21,12 +21,19 @@ You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&g
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
-
+<div class="flash-success" id="hidden_update_result" style="display:none;">The Group has been <b>deleted</b> without problems!</div>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'group-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'afterAjaxUpdate'=>'
+					function(id, data) { 
+						var divResult = $("#hidden_update_result");
+				 		divResult.show();
+				 		divResult.animate({opacity: 1.0}, 4000).fadeOut("slow");
+					}
+				',
 	'columns'=>array(
 		array(
 			'name'=>'title',

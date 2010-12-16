@@ -37,15 +37,24 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
+<div class="flash-success" id="hidden_update_result" style="display:none;">The Relation to the Crawler has been <b>deleted</b> without problems!</div>
+
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-crawler-grid',
+	'afterAjaxUpdate'=>'
+				function(id, data) { 
+					var divResult = $("#hidden_update_result");
+			 		divResult.show();
+			 		divResult.animate({opacity: 1.0}, 4000).fadeOut("slow");
+				}
+			',
 	'dataProvider'=>$model->search( $_GET['crawlerID'] ),
 	'filter'=>$model,
 	'columns'=>array(
 		'user.username',
 		/*'crawler.title',
 		array(
-			'name'=>'crawler.title',
+			'name'=>'crawler.title',deleteddeleted
 			'header'=>'Crawler DB',
 			'value'=>'$data->crawler->db_name_prepend.$data->crawler->db_name',
 			'filter'=>false,
